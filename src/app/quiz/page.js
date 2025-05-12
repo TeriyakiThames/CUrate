@@ -1,7 +1,7 @@
-export default function Home() {
+export default function Quiz() {
 	return (
 		<div>
-			<h1>Home Page</h1>
+			<h1>Quiz Page</h1>
 			<div className="gap-5 flex mt-2">
 				<a href="/">Home</a>
 				<a href="/search">Search</a>

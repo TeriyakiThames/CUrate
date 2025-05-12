@@ -1,7 +1,7 @@
-export default function Home() {
+export default function Random() {
 	return (
 		<div>
-			<h1>Home Page</h1>
+			<h1>Random Page</h1>
 			<div className="gap-5 flex mt-2">
 				<a href="/">Home</a>
 				<a href="/search">Search</a>
