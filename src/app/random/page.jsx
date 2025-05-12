@@ -1,13 +1,10 @@
+import NavBar from "@/components/navbar";
+
 export default function Random() {
 	return (
 		<div>
 			<h1>Random Page</h1>
-			<div className="gap-5 flex mt-2">
-				<a href="/">Home</a>
-				<a href="/search">Search</a>
-				<a href="/quiz">Quiz</a>
-				<a href="/random">Random</a>
-			</div>
+			<NavBar />
 		</div>
 	);
 }
