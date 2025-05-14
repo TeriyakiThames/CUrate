@@ -1,10 +1,29 @@
+"use client";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+
 export default function NavBar() {
+	const pathname = usePathname();
+
+	const [mounted, setMounted] = useState(false);
+	useEffect(() => {
+		setMounted(true);
+	}, []);
+	if (!mounted) return null;
+
 	return (
 		<div
-			className="fixed bottom-0 flex gap-12 justify-center p-2.5 w-[450px]"
+			className="fixed bottom-0 flex gap-12 justify-center p-2.5 w-full max-w-[448px] mx-auto bg-white z-50"
 			style={{ boxShadow: "0 -4px 10px 0px rgba(0,0,0,0.1)" }}
 		>
-			<a href="/" className="text-[#A9A9A9] hover:text-[#FCA136]">
+			{/* Home Button */}
+			<Link
+				href="/"
+				className={`${
+					pathname === "/" ? "text-[#FCA136]" : "text-[#A9A9A9]"
+				} hover:text-[#FCA136]`}
+			>
 				<svg
 					width="64"
 					height="80"
@@ -23,8 +42,15 @@ export default function NavBar() {
 						fill="currentColor"
 					/>
 				</svg>
-			</a>
-			<a href="/search" className="text-[#A9A9A9] text-xs hover:text-[#FCA136]">
+			</Link>
+
+			{/* Search Button */}
+			<Link
+				href="/search"
+				className={`${
+					pathname === "/search" ? "text-[#FCA136]" : "text-[#A9A9A9]"
+				} hover:text-[#FCA136]`}
+			>
 				<svg
 					width="64"
 					height="80"
@@ -43,8 +69,15 @@ export default function NavBar() {
 						fill="currentColor"
 					/>
 				</svg>
-			</a>
-			<a href="/quiz" className="text-[#A9A9A9] text-xs hover:text-[#FCA136]">
+			</Link>
+
+			{/* Quiz Button */}
+			<Link
+				href="/quiz"
+				className={`${
+					pathname === "/quiz" ? "text-[#FCA136]" : "text-[#A9A9A9]"
+				} hover:text-[#FCA136]`}
+			>
 				<svg
 					width="64"
 					height="80"
@@ -63,8 +96,15 @@ export default function NavBar() {
 						fill="currentColor"
 					/>
 				</svg>
-			</a>
-			<a href="/random" className="text-[#A9A9A9] text-xs hover:text-[#FCA136]">
+			</Link>
+
+			{/* Random Button */}
+			<Link
+				href="/random"
+				className={`${
+					pathname === "/random" ? "text-[#FCA136]" : "text-[#A9A9A9]"
+				} hover:text-[#FCA136]`}
+			>
 				<svg
 					width="64"
 					height="80"
@@ -83,7 +123,7 @@ export default function NavBar() {
 						fill="currentColor"
 					/>
 				</svg>
-			</a>
+			</Link>
 		</div>
 	);
 }
