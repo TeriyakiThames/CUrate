@@ -1,10 +1,16 @@
 "use client";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
 export default function NavBar() {
 	const pathname = usePathname();
+	const router = useRouter();
+
+	const handleClick = () => {
+		const random = Math.floor(Math.random() * 33) + 1;
+		router.push(`/restaurant/${random}`);
+	};
 
 	const [mounted, setMounted] = useState(false);
 	useEffect(() => {
@@ -99,8 +105,8 @@ export default function NavBar() {
 			</Link>
 
 			{/* Random Button */}
-			<Link
-				href="/random"
+			<button
+				onClick={handleClick}
 				className={`${
 					pathname === "/random" ? "text-[#FCA136]" : "text-[#A9A9A9]"
 				} hover:text-[#FCA136]`}
@@ -123,7 +129,7 @@ export default function NavBar() {
 						fill="currentColor"
 					/>
 				</svg>
-			</Link>
+			</button>
 		</div>
 	);
 }
