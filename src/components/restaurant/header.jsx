@@ -22,7 +22,7 @@ export default function RestaurantHeader({ data }) {
 				{data.name || "Missing Name"}
 			</h1>
 			<div className="z-50 absolute bottom-5 left-7 font-adlam text-white text-lg flex gap-5">
-				<h1>{data.foodOrigin || "Missing Food Origin"}</h1>
+				<h1>{data.foodOrigin || "Missing"}</h1>
 				<h1>|</h1>
 				<ReactStars
 					count={5}

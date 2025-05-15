@@ -9,7 +9,9 @@ export default function RootLayout({ children }) {
 	return (
 		<html lang="en">
 			<body>
-				<main className="mobile">{children}</main>
+				<div className="animated-foods">
+					<main className="mobile ">{children}</main>
+				</div>
 			</body>
 		</html>
 	);

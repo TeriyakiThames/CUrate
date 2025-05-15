@@ -11,6 +11,32 @@
 	font-family: "ADLaMDisplay", sans-serif;
 }
 
+@keyframes pan {
+	0% {
+		background-position: 0% 0%;
+	}
+	100% {
+		background-position: 100% 0%;
+	}
+}
+
+.animated-foods {
+	position: relative;
+	z-index: 1;
+}
+
+.animated-foods::before {
+	content: "";
+	position: absolute;
+	inset: 0;
+	background-image: url("/shared/bg.svg");
+	background-size: 20%;
+	background-repeat: repeat;
+	animation: pan 60s linear infinite;
+	opacity: 5%;
+	z-index: -1;
+}
+
 .mobile {
 	display: relative;
 	max-width: 448px;
