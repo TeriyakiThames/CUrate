@@ -30,10 +30,10 @@
 	position: absolute;
 	inset: 0;
 	background-image: url("/shared/bg.svg");
-	background-size: 20%;
+	background-size: 100px;
 	background-repeat: repeat;
 	animation: pan 60s linear infinite;
-	opacity: 5%;
+	opacity: 0.05;
 	z-index: -1;
 }
 
