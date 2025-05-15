@@ -1,13 +1,10 @@
+import NavBar from "@/components/shared/navbar";
+
 export default function Quiz() {
 	return (
 		<div>
 			<h1>Quiz Page</h1>
-			<div className="gap-5 flex mt-2">
-				<a href="/">Home</a>
-				<a href="/search">Search</a>
-				<a href="/quiz">Quiz</a>
-				<a href="/random">Random</a>
-			</div>
+			<NavBar />
 		</div>
 	);
 }
