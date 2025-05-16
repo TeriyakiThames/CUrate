@@ -12,7 +12,7 @@ export default function RestaurantMap({ data }) {
 							allowFullScreen
 							loading="lazy"
 							referrerPolicy="no-referrer-when-downgrade"
-							className="rounded-2xl mb-5 shadow-lg shadow-black/25"
+							className="rounded-2xl mb-5 shadow-lg shadow-black/25 -z-1"
 						/>
 					</div>
 				</>

@@ -11,12 +11,17 @@ const ReactStars = dynamic(() => import("react-stars"), {
 export default function RestaurantHeader({ data }) {
 	return (
 		<div className="w-full h-[360px] relative mb-5">
-			<Image
-				src={data.imageUrl}
-				alt="Restaurant image"
-				fill
-				className="object-cover rounded-b-4xl shadow-lg shadow-black/25"
-			/>
+			{data.imageUrl ? (
+				<Image
+					src={data.imageUrl}
+					alt="Restaurant image"
+					fill
+					className="object-cover rounded-b-4xl shadow-lg shadow-black/25"
+				/>
+			) : (
+				<div className="object-cover rounded-b-4xl shadow-lg shadow-black/25 bg-[#FFE381]"></div>
+			)}
+
 			<div className="absolute bottom-0 left-0 right-0 h-2/3 bg-gradient-to-t from-black/75 to-transparent pointer-events-none rounded-b-4xl" />
 			<h1 className="z-50 absolute bottom-14 left-5 font-adlam text-white text-5xl">
 				{data.name || "Missing Name"}

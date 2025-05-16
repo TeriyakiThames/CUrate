@@ -1,4 +1,7 @@
 export default function RestaurantTags({ data }) {
+	if (!Array.isArray(data.tags) || data.tags.length === 0) {
+		<></>;
+	}
 	return (
 		<>
 			<h1 className="font-adlam ml-5 mb-2 text-2xl flex">Tags:</h1>
