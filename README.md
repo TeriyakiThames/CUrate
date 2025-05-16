@@ -33,3 +33,6 @@ CURATE/
 │       └── globals.css
 └── ...
 ```
+
+## Backend
+- Backend is ran separately at [CUrate Server](https://github.com/Popmunj/CUrate-server)
