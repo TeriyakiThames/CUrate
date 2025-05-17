@@ -15,7 +15,7 @@ export default function ScrollCard({ title, data }) {
 				{data.map((restaurant, index) => (
 					<a
 						key={index}
-						href={restaurant.path}
+						href={`/restaurant/${restaurant.id}`}
 						className="inline-block text-center mx-3 "
 					>
 						<div className="relative w-[150px] h-[200px]">

@@ -1,4 +1,8 @@
 export default function RestaurantTags({ data }) {
+	if (!Array.isArray(data.tags) || data.tags.length === 0) {
+		return <></>;
+	}
+
 	return (
 		<>
 			<h1 className="font-adlam ml-5 mb-2 text-2xl flex">Tags:</h1>
@@ -12,7 +16,7 @@ export default function RestaurantTags({ data }) {
 				{data.tags.map((tag, index) => (
 					<li
 						key={index}
-						className="px-2 py-0.5 bg-[#fca136] rounded-xl  shrink-0"
+						className="px-2 py-0.5 bg-[#fca136] rounded-xl shrink-0"
 					>
 						{tag}
 					</li>
