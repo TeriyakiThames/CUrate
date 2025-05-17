@@ -20,6 +20,19 @@
 	}
 }
 
+@keyframes upDown {
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(10px);
+	}
+}
+
+.animated-up-down {
+	animation: upDown 3s infinite ease-in-out;
+}
 .animated-foods {
 	position: relative;
 	z-index: 1;

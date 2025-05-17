@@ -34,6 +34,7 @@ export function useQuiz() {
 		}
 
 		try {
+			alert("Loading, please wait a moment!");
 			const response = await fetch("/api/quiz", {
 				method: "POST",
 				headers: {

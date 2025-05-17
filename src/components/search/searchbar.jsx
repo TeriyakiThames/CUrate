@@ -1,76 +1,31 @@
 "use client";
-import { useState, useRef, useEffect } from "react";
-import useRestaurant from "@/utils/useRestaurant";
+import useSearchBar from "@/utils/useSearchBar";
 
 export default function SearchBar({ onSearchResults }) {
-	const [searchTerm, setSearchTerm] = useState("");
-	const [showResults, setShowResults] = useState(false);
-	const [results, setResults] = useState([]);
-	const { restaurantData, loading } = useRestaurant();
-	const dropdownRef = useRef(null);
-
-	// Handles clicks outside the dropdown to close it when clicked elsewhere
-	useEffect(() => {
-		function handleClickOutside(event) {
-			if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-				setShowResults(false);
-			}
-		}
-		document.addEventListener("mousedown", handleClickOutside);
-		return () => {
-			document.removeEventListener("mousedown", handleClickOutside);
-		};
-	}, []);
-
-	// Filters the restaurant data based on the search term for both names and tags
-	const searchRestaurants = (term) => {
-		if (!term.trim()) return [];
-		const normalizedTerm = term.toLowerCase().trim();
-		return restaurantData.filter((restaurant) => {
-			const nameMatch = restaurant.name?.toLowerCase().includes(normalizedTerm);
-			const tagMatch =
-				restaurant.tags &&
-				restaurant.tags.some((tag) =>
-					tag.toLowerCase().includes(normalizedTerm)
-				);
-			return nameMatch || tagMatch;
-		});
-	};
-
-	// Handles the change of the search input, filters the results, and toggles dropdown visibility
-	const handleInputChange = (e) => {
-		const value = e.target.value;
-		setSearchTerm(value);
-
-		if (value.trim()) {
-			const searchResults = searchRestaurants(value);
-			setResults(searchResults);
-			setShowResults(true);
-		} else {
-			setResults([]);
-			setShowResults(false);
-		}
-	};
-
-	// Handles form submission, performs the search, and triggers the callback function if provided
-	const handleSubmission = (event) => {
-		event.preventDefault();
-		if (searchTerm.trim() !== "") {
-			const searchResults = searchRestaurants(searchTerm);
-			setResults(searchResults);
-			setShowResults(true);
-
-			if (onSearchResults && typeof onSearchResults === "function") {
-				onSearchResults(searchResults);
-			}
-		} else {
-			alert("Enter a valid search term...");
-		}
-	};
+	const {
+		searchTerm,
+		setSearchTerm,
+		showResults,
+		setShowResults,
+		results,
+		handleInputChange,
+		handleSubmission,
+		dropdownRef,
+		loading,
+	} = useSearchBar(onSearchResults);
 
 	return (
 		<div className="relative" ref={dropdownRef}>
-			<h1 className="font-adlam text-5xl ml-10 pt-12">CUrate</h1>
+			<h1 className="font-adlam text-5xl ml-10 pt-12">
+				<a
+					href="https://www.instagram.com/thames_chiratt/"
+					target="none"
+					className="text-[#fca136] hover:text-[#de5c8e]"
+				>
+					CU
+				</a>
+				rate
+			</h1>
 			<form
 				onSubmit={handleSubmission}
 				className="flex justify-between mx-10 m-6 p-3 rounded-4xl bg-[#EAEAEA] text-[#7E7E7E]"
@@ -106,22 +61,20 @@ export default function SearchBar({ onSearchResults }) {
 			{showResults && results.length > 0 && (
 				<div className="mx-10 bg-white rounded-2xl shadow-lg border border-gray-200 max-h-64 overflow-y-auto z-10 absolute left-0 right-0 top-[175px]">
 					{results.map((restaurant, index) => (
-						<>
-							<a key={index} href={`/restaurant/${restaurant.id}`}>
-								<div className="px-4 py-2 hover:bg-[#fca136]  hover:text-white cursor-pointer flex items-center">
-									<div>
-										<div className="font-medium font-adlam">
-											{restaurant.name}
-										</div>
-										{restaurant.tags && (
-											<div className="text-xs text-gray-400  font-adlam">
-												{restaurant.tags.join(", ")}
-											</div>
-										)}
+						<a key={index} href={`/restaurant/${restaurant.id}`}>
+							<div className="px-4 py-2 hover:bg-[#fca136] hover:text-white cursor-pointer flex items-center">
+								<div>
+									<div className="font-medium font-adlam">
+										{restaurant.name}
 									</div>
+									{restaurant.tags && (
+										<div className="text-xs text-gray-400 font-adlam">
+											{restaurant.tags.join(", ")}
+										</div>
+									)}
 								</div>
-							</a>
-						</>
+							</div>
+						</a>
 					))}
 				</div>
 			)}
