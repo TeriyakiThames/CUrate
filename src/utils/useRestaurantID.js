@@ -5,13 +5,13 @@ export default function useRestaurant(id) {
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(false);
 
+	// Fetch restaurant data when the component mounts or when id changes
 	useEffect(() => {
 		const fetchRestaurant = async () => {
 			try {
 				const res = await fetch(`/api/restaurant?id=${id}`);
 				if (!res.ok) throw new Error("Failed to fetch");
 				const data = await res.json();
-				console.log("Fetched restaurant data:", data);
 				setRestaurant(data);
 			} catch (err) {
 				console.error("Fetch error:", err);
@@ -22,7 +22,6 @@ export default function useRestaurant(id) {
 		};
 
 		if (id) {
-			console.log("Fetching restaurant with id:", id);
 			fetchRestaurant();
 		}
 	}, [id]);
