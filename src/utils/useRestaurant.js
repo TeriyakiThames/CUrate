@@ -8,10 +8,19 @@ export default function useRestaurant() {
 	// Fetch restaurant data when the component mounts
 	useEffect(() => {
 		const fetchRestaurants = async () => {
+			const cachedData = localStorage.getItem("restaurants");
+
+			if (cachedData) {
+				setRestaurantData(JSON.parse(cachedData));
+				setLoading(false);
+				return;
+			}
+
 			try {
 				const res = await fetch("/api/search");
 				if (!res.ok) throw new Error("Failed to fetch");
 				const data = await res.json();
+				localStorage.setItem("restaurants", JSON.stringify(data));
 				setRestaurantData(data);
 			} catch (err) {
 				console.error("Fetch error:", err);
