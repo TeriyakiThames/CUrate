@@ -44,7 +44,7 @@ export default function QuestionNAnswer() {
 					<div className="bg-white/75">
 						<h1 className="text-left text-2xl">Explanation:</h1>
 						<p className="my-5 mb-[125px]">
-							{response.explanation || "Loading explaination..."}
+							{response.explanation || "Loading explanation..."}
 						</p>
 					</div>
 

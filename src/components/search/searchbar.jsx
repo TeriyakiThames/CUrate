@@ -104,7 +104,6 @@ export default function SearchBar({ onSearchResults }) {
 
 			{/* Results dropdown */}
 			{showResults && results.length > 0 && (
-				// className="flex justify-between mx-10 my-6 p-3 rounded-4xl bg-[#EAEAEA] text-[#7E7E7E]"
 				<div className="mx-10 bg-white rounded-2xl shadow-lg border border-gray-200 max-h-64 overflow-y-auto z-10 absolute left-0 right-0 top-[175px]">
 					{results.map((restaurant, index) => (
 						<>
