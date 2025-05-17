@@ -5,7 +5,6 @@ const restaurants = [
 		imageUrl:
 			"https://img.wongnai.com/p/1600x0/2024/09/30/426055ecc1b3467d8839b15eef472932.jpg",
 		link: "https://g.co/kgs/CMYdJBv",
-		path: "/restaurant/1",
 		foodOrigin: "Japanese",
 		priceRange: "2",
 		rating: "4.4",
