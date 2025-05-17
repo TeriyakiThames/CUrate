@@ -16,7 +16,16 @@ export default function SearchBar({ onSearchResults }) {
 
 	return (
 		<div className="relative" ref={dropdownRef}>
-			<h1 className="font-adlam text-5xl ml-10 pt-12">CUrate</h1>
+			<h1 className="font-adlam text-5xl ml-10 pt-12">
+				<a
+					href="https://www.instagram.com/thames_chiratt/"
+					target="none"
+					className="text-[#fca136] hover:text-[#de5c8e]"
+				>
+					CU
+				</a>
+				rate
+			</h1>
 			<form
 				onSubmit={handleSubmission}
 				className="flex justify-between mx-10 m-6 p-3 rounded-4xl bg-[#EAEAEA] text-[#7E7E7E]"
