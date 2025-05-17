@@ -1,13 +1,17 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export function useQuiz() {
 	const [question, setQuestion] = useState("");
 	const [answer, setAnswer] = useState("");
 	const [response, setResponse] = useState(null);
+	const fetchedRef = useRef(false);
 
 	// Fetch the quiz question when the component mounts
 	useEffect(() => {
 		async function fetchQuestion() {
+			if (fetchedRef.current) return;
+			fetchedRef.current = true;
+
 			try {
 				const res = await fetch("/api/quiz");
 				if (!res.ok) throw new Error("Failed to fetch question");
@@ -17,6 +21,7 @@ export function useQuiz() {
 				console.error("Error fetching question:", err);
 			}
 		}
+
 		fetchQuestion();
 	}, []);
 
