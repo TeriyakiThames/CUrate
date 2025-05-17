@@ -5,13 +5,13 @@ export default function useRestaurant() {
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(false);
 
+	// Fetch restaurant data when the component mounts
 	useEffect(() => {
 		const fetchRestaurants = async () => {
 			try {
 				const res = await fetch("/api/search");
 				if (!res.ok) throw new Error("Failed to fetch");
 				const data = await res.json();
-				console.log("Fetched restaurant list:", data);
 				setRestaurantData(data);
 			} catch (err) {
 				console.error("Fetch error:", err);
@@ -24,6 +24,7 @@ export default function useRestaurant() {
 		fetchRestaurants();
 	}, []);
 
+	// Function to filter restaurant data based on type
 	const filterData = (type) => {
 		switch (type) {
 			case "cheap":
